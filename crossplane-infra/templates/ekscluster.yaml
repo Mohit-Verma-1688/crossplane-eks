@@ -1,0 +1,38 @@
+apiVersion: prodready.cluster/v1alpha1
+kind: ClusterClaim
+metadata:
+  name: eks-cluster1
+  labels:
+    cluster-owner: mverma
+  annotations:
+    argocd.argoproj.io/sync-wave: "200"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  id: team-a-eks
+  compositionSelector:
+    matchLabels:
+      provider: aws
+      cluster: eks
+  parameters:
+    nodeSize: small
+    minNodeCount: 3
+    k8s-version: "1.20"
+    region: us-east-1  
+    vpc-name: "crossplane-vpc"
+    vpc-cidrBlock: "10.20.0.0/16"
+
+    subnet1-public-name: "public-worker-1 "
+    subnet1-public-cidrBlock: "10.20.1.0/28"
+    subnet1-public-availabilityZone: "us-east-1a"
+
+    subnet2-public-name: "public-worker-2"
+    subnet2-public-cidrBlock: "10.20.2.0/28"
+    subnet2-public-availabilityZone: "us-east-1b"
+
+    subnet1-private-name: "private-worker-1 "
+    subnet1-private-cidrBlock: "10.20.11.0/28"
+    subnet1-private-availabilityZone: "us-east-1c"
+
+    subnet2-private-name: "private-worker-2"
+    subnet2-private-cidrBlock: "10.20.12.0/28"
+    subnet2-private-availabilityZone: "us-east-1d"
