@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-aws-eks
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: argocd-projects
+  source:
+    chart: crossplane-argocd-eks
+    repoURL: https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
+    targetRevision: 1.0.0 
+    helm:
+      releaseName: crossplane-argocd-eks 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 1
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m
