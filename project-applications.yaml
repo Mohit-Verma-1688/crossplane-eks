@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: applications-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for parent applicatons used when employing app of apps pattern
+  sourceRepos:
+  - git@github.com:Mohit-Verma-1688/crossplane-eks.git
+
+  #
+  # Allow this project to deploy only to 'argocd' namespace
+  #
+  destinations:
+  - namespace: argocd
+    server: https://kubernetes.default.svc
+  - namespace: monitoring
+    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com 
+  #
+  # Deny all namespace-scoped resources from being created, except for Application
+  #
+  namespaceResourceWhitelist:
+  - group: 'argoproj.io'
+    kind: Application
