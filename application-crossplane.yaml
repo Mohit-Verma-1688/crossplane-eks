@@ -9,7 +9,7 @@ metadata:
 spec:
   project: argocd-projects
   source:
-    repoURL: git@github.com:Mohit-Verma-1688/crossplane-eks.git 
+    repoURL: ssh://git@github.com:Mohit-Verma-1688/crossplane-eks.git 
     targetRevision: HEAD
     path: crossplane-infra
   destination:
