@@ -16,7 +16,7 @@ spec:
   #
   destinations:
   - namespace: argocd
-    server: https://kubernetes.default.svc
+    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
   - namespace: monitoring
     server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com 
   #
