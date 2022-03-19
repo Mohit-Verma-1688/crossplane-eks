@@ -7,7 +7,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io    
 spec:
-  project: applications-project-mon
+  project: applications-project-mon1
   source:
     repoURL: git@github.com:Mohit-Verma-1688/crossplane-eks.git 
     targetRevision: HEAD
