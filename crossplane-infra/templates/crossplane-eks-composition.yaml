@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   ignoreCrossplaneConstraints: false
-  package: public.ecr.aws/e9p0j2k2/crossplane-eks:v2
+  package: public.ecr.aws/e9p0j2k2/crossplane-eks:v4
   packagePullPolicy: IfNotPresent
   revisionActivationPolicy: Automatic
   revisionHistoryLimit: 0
