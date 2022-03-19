@@ -26,4 +26,8 @@ spec:
   #
   namespaceResourceWhitelist:
   - group: 'argoproj.io'
-    kind: Application
+    kind: Application 
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
