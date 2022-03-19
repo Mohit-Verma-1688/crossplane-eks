@@ -5,7 +5,7 @@ metadata:
   labels:
     cluster-owner: mverma
   annotations:
-    argocd.argoproj.io/sync-wave: "200"
+    argocd.argoproj.io/sync-wave: "300"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   id: team-a-eks

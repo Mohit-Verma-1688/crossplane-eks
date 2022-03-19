@@ -3,7 +3,7 @@ kind: Configuration
 metadata:
   name: crossplane-eks-composition
   annotations:
-    argocd.argoproj.io/sync-wave: "100"
+    argocd.argoproj.io/sync-wave: "150"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   ignoreCrossplaneConstraints: false
