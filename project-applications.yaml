@@ -22,6 +22,8 @@ spec:
     server: https://kubernetes.default.svc 
   - namespace: monitoring
     server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com 
+  - namespace: ingress-nginx
+    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
   #
   # Deny all namespace-scoped resources from being created, except for Application
   clusterResourceWhitelist:
@@ -41,3 +43,9 @@ spec:
     kind: Role
   - group: 'rbac.authorization.k8s.io'
     kind: RoleBinding
+  - group: 'networking.k8s.io'
+    kind: IngressClass
+  - group: 'admissionregistration.k8s.io'
+    kind: ValidatingWebhookConfiguration
+  - group: 'admissionregistration.k8s.io'
+    kind: MutatingWebhookConfiguration
