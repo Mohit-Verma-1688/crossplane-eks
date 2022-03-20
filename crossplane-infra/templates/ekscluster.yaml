@@ -15,7 +15,7 @@ spec:
       cluster: eks
   parameters:
     nodeSize: small
-    minNodeCount: 1
+    minNodeCount: 2
     k8s-version: "1.20"
     region: us-east-1  
     vpc-name: "crossplane-vpc"
