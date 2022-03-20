@@ -55,3 +55,79 @@ argocd cluster add my-cluster-alias
 #If you are not sure of the name of your cluster alias, you can list them with this command, or use the full cluster name:
 
 kubectl config get-contexts
+
+
+# this is the manual step needed to allow cert manager to access AWS ROUTE53 to validate hostnames. 
+
+
+
+## Create IAM Role for Kubernetes Service Account
+
+- Create OpenID Connect provider, use `sts.amazonaws.com` for Audience
+
+- Create IAM policy with Route53 access
+  - `CertManagerRoute53Access`
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "route53:GetChange",
+      "Resource": "arn:aws:route53:::change/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "route53:ChangeResourceRecordSets",
+        "route53:ListResourceRecordSets"
+      ],
+      "Resource": "arn:aws:route53:::hostedzone/<id>"
+    }
+  ]
+}
+```
+
+- Create IAM role for `cert-manager-acme` cert-manager
+
+
+- Get service account name for cert-manager
+```bash
+kubectl get sa -n cert-manager
+```
+
+- Update trust for IAM role to allow only `cert-083-cert-manager` service account to assume it
+```
+aud -> sub
+sts.amazonaws.com -> system:serviceaccount:cert-manager:cert-083-cert-manager
+```
+
+- Update service account manually, add following line to annotations
+```bash
+kubectl edit sa -n cert-manager
+```
+```yaml
+eks.amazonaws.com/role-arn: arn:aws:iam::424432388155:role/cert-manager-acme
+```
+
+- Modify the cert-manager Deployment with the correct file system permissions, so the ServiceAccount token can be read.
+```bash
+kubectl get deployment -n cert-manager
+kubectl edit deployment cert-083-cert-manager -n cert-manager
+```
+```yaml
+- --issuer-ambient-credentials
+```
+
+- Make sure pod restarted
+```bash
+kubectl get pods -n cert-manager
+```
+
+- This change can be inclused to Helm Chart (include to `cert-manager-values.yaml` before installing or upgrade Helm release)
+```yaml
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::424432388155:role/cert-manager-acme
+extraArgs:
+- --issuer-ambient-credentials
