@@ -10,4 +10,4 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::833192599359:role/cert-manager-acme
 extraArgs: 
-- --issuer-ambient-credentials
+  - --issuer-ambient-credentials
