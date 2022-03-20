@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
     path: workloads/monitoring
     helm:
-      releaseName: observability     
+      releaseName: ingress    
       valueFiles:
       - ingress-values.yaml   
   destination:
