@@ -10,24 +10,34 @@ spec:
   description: Project for parent applicatons used when employing app of apps pattern
   sourceRepos:
   - git@github.com:Mohit-Verma-1688/crossplane-eks.git
-
-  #
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  - group: 'rbac.authorization.k8s.io'
+    kind: '*'
   # Allow this project to deploy only to 'argocd' namespace
   #
   destinations:
-  - namespace: argocd
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
   - namespace: argocd
     server: https://kubernetes.default.svc 
   - namespace: monitoring
     server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com 
   #
   # Deny all namespace-scoped resources from being created, except for Application
-  #
-  namespaceResourceWhitelist:
-  - group: 'argoproj.io'
-    kind: Application 
-
   clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
+  - group: 'argoproj.io'
+    kind: Application
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+  - group: 'policy'
+    kind: PodSecurityPolicy
+  - group: 'apiextensions.k8s.io'
+    kind: CustomResourceDefinition
+  - group: 'rbac.authorization.k8s.io'
+    kind: Role
+  - group: 'rbac.authorization.k8s.io'
+    kind: RoleBinding
