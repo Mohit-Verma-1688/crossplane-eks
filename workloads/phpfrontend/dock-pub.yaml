@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJtb2hpdHZlcm1hMTY4OCIsInBhc3N3b3JkIjoiTWF2ZTk5bmlyIiwiZW1haWwiOiJtb2hpdHZlcm1hMTYwMjg4QGdtYWlsLmNvbSIsImF1dGgiOiJiVzlvYVhSMlpYSnRZVEUyT0RnNlRXRjJaVGs1Ym1seSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: dockpub
+  namespace: demo-webapp
+type: kubernetes.io/dockerconfigjson

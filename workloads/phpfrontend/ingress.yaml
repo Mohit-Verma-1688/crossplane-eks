@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-web
+  namespace: demo-webapp
+  annotations:
+   cert-manager.io/issuer: letsencrypt-dns01-prod
+spec:
+  ingressClassName: external-nginx
+  tls:                                
+  - hosts:                            
+      - demowebapp.themulticlouding.com            
+    secretName: ingress-local-tls     
+  rules:
+  - host: demowebapp.themulticlouding.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 80
