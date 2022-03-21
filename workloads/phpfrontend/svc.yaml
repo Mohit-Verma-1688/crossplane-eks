@@ -19,6 +19,5 @@ spec:
     targetPort: 443
   selector:
     app: app
-  type: LoadBalancer
 status:
   loadBalancer: {}
