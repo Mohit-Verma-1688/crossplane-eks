@@ -9,10 +9,10 @@ metadata:
 spec:
   project: applications-project-mon1
   source:
-    repoURL: https://charts.jetstack.io
+    repoURL: https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
     chart:  cert-manager
-    targetRevision: v1.5.3
-    path: workloads/cert-manager
+    targetRevision: HEAD
+    path: ./
     helm:
       releaseName: cert-manager     
       valueFiles:

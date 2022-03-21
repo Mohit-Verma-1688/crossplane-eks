@@ -11,6 +11,7 @@ spec:
   sourceRepos:
   - git@github.com:Mohit-Verma-1688/crossplane-eks.git
   - https://charts.jetstack.io
+  - https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
