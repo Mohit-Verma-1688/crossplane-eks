@@ -10,6 +10,7 @@ spec:
   description: Project for parent applicatons used when employing app of apps pattern
   sourceRepos:
   - git@github.com:Mohit-Verma-1688/crossplane-eks.git
+  - https://charts.jetstack.io
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
