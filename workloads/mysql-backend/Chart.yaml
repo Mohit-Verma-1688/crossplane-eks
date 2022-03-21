@@ -1,0 +1,11 @@
+---
+apiVersion: v2
+name: mysql-argocd
+description: A Helm chart for deploying mysql
+type: application
+version: 2.0.0
+appVersion: "2.0"
+dependencies:
+- name: mysql
+  version: 1.6.9 
+  repository: https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
