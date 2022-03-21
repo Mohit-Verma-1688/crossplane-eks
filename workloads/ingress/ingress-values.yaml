@@ -192,7 +192,8 @@ controller:
 
   # -- Annotations to be added to the controller Deployment or DaemonSet
   ##
-  annotations: {}
+  annotations: 
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
   #  keel.sh/pollSchedule: "@every 60m"
 
   # -- Labels to be added to the controller Deployment or DaemonSet and other resources that do not have option to specify labels
@@ -517,7 +518,7 @@ controller:
       # -- Enables an additional internal load balancer (besides the external one).
       enabled: false
       # -- Annotations are mandatory for the load balancer to come up. Varies with the cloud service.
-      annotations: {}
+      annotations: {} 
 
       # loadBalancerIP: ""
 
@@ -861,8 +862,7 @@ defaultBackend:
     targetMemoryUtilizationPercentage: 50
 
   service:
-    annotations: 
-     service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    annotations: {} 
 
     # clusterIP: ""
 
