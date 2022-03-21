@@ -3,7 +3,7 @@ installCRDs: true
 prometheus:
   enabled: false
   servicemonitor:
-    enabled: true
+    enabled: false
     prometheusInstance: lesson-083
 # DNS-01 Route53
 serviceAccount:
