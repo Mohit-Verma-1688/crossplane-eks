@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: mysql
       valueFiles:
-      - workloads/mysql-backend/mysqlvalues.yaml  
+      - mysqlvalues.yaml  
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: demo-webapp

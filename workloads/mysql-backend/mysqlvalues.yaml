@@ -109,7 +109,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: gp2
+  #storageClass: gp2
   accessMode: ReadWriteOnce
   size: 100Mi
   annotations: {}
