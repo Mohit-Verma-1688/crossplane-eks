@@ -14,6 +14,5 @@ spec:
     targetPort: 80
   selector:
     app: app
-  type: LoadBalancer
 status:
   loadBalancer: {}
