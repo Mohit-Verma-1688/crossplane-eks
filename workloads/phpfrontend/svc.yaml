@@ -9,10 +9,16 @@ metadata:
   namespace: demo-webapp
 spec:
   ports:
-  - port: 80
+  - name: port-1
+    port: 80
     protocol: TCP
     targetPort: 80
+  - name: port-2
+    port: 443
+    protocol: TCP
+    targetPort: 443
   selector:
     app: app
+  type: LoadBalancer
 status:
   loadBalancer: {}
