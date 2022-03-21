@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: php-fpm
-        image: mohitverma1688/php-app:v2
+        image: mohitverma1688/php-app:main-dc204d66-1646805423
         ports:
         - containerPort: 9000
           name: http
@@ -35,6 +35,8 @@ spec:
         - name: nginx-config-volume
           mountPath: /etc/nginx/conf.d/default.conf
           subPath: default.conf
+      imagePullSecrets: 
+      - name: dockpub 
       restartPolicy: Always
       serviceAccountName: ""
       volumes:
