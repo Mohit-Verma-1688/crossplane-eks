@@ -192,8 +192,7 @@ controller:
 
   # -- Annotations to be added to the controller Deployment or DaemonSet
   ##
-  annotations: 
-    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+  annotations: {} 
   #  keel.sh/pollSchedule: "@every 60m"
 
   # -- Labels to be added to the controller Deployment or DaemonSet and other resources that do not have option to specify labels
@@ -449,7 +448,8 @@ controller:
     ##
     appProtocol: true
 
-    annotations: {}
+    annotations: 
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
     labels: {}
     # clusterIP: ""
 
