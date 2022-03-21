@@ -13,9 +13,6 @@ spec:
     targetRevision: HEAD
     path: workloads/mysql-backend
     helm:
-      repoURL: https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
-      chart: mysql
-      chartVersion: "1.6.9"
       releaseName: mysql
       valueFiles:
        - mysql-values.yaml  
