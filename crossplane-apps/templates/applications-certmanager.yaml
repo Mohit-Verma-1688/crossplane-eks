@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
     chart:  cert-manager
-    targetRevision: HEAD
+    targetRevision: v1.5.3
     path: ./
     helm:
       releaseName: cert-manager     
