@@ -69,7 +69,7 @@ controller:
   # -- Process Ingress objects without ingressClass annotation/ingressClassName field
   # Overrides value for --watch-ingress-without-class flag of the controller binary
   # Defaults to false
-  watchIngressWithoutClass: false
+  watchIngressWithoutClass: true
 
   # -- Process IngressClass per name (additionally as per spec.controller).
   ingressClassByName: false
@@ -174,7 +174,8 @@ controller:
 
   # -- Additional command line arguments to pass to nginx-ingress-controller
   # E.g. to specify the default SSL certificate you can use
-  extraArgs: {}
+  extraArgs: 
+   ingress-class: external-nginx
   ## extraArgs:
   ##   default-ssl-certificate: "<namespace>/<secret_name>"
 
