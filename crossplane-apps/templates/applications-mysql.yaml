@@ -18,7 +18,7 @@ spec:
       chartVersion: "1.6.9"
       releaseName: mysql
       valueFiles:
-      - mysql-values.yaml  
+       - mysql-values.yaml  
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: demo-webapp
