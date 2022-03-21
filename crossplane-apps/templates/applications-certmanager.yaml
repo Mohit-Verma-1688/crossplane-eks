@@ -9,8 +9,9 @@ metadata:
 spec:
   project: applications-project-mon1
   source:
-    repoURL: git@github.com:Mohit-Verma-1688/crossplane-eks.git 
-    targetRevision: HEAD
+    repoURL: https://charts.jetstack.io
+    chart:  cert-manager
+    targetRevision: v1.5.3
     path: workloads/cert-manager
     helm:
       releaseName: cert-manager     
