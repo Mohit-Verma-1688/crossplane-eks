@@ -14,7 +14,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: after-provider
+  generateName: after-provider-1
   annotations:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
@@ -25,5 +25,5 @@ spec:
       containers:
         - name: page-down
           image: alpine:latest
-          command: ["sleep", "90"]
+          command: ["sleep", "20"]
       restartPolicy: Never
