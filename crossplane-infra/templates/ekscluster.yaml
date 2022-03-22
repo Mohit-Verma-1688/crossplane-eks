@@ -1,14 +1,14 @@
 apiVersion: prodready.cluster/v1alpha1
 kind: ClusterClaim
 metadata:
-  name: eks-cluster1
+  name: eks-cluster-dev
   labels:
     cluster-owner: mverma
   annotations:
     argocd.argoproj.io/sync-wave: "300"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  id: team-a-eks
+  id: crossplane-eks
   compositionSelector:
     matchLabels:
       provider: aws
