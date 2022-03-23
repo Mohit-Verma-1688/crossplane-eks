@@ -31,8 +31,8 @@ spec:
 
     subnet1-private-name: "private-worker-1 "
     subnet1-private-cidrBlock: "10.40.11.0/26"
-    subnet1-private-availabilityZone: "us-east-1c"
+    subnet1-private-availabilityZone: "us-east-1a"
 
     subnet2-private-name: "private-worker-2"
     subnet2-private-cidrBlock: "10.40.12.0/26"
-    subnet2-private-availabilityZone: "us-east-1d"
+    subnet2-private-availabilityZone: "us-east-1b"

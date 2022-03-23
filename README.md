@@ -26,6 +26,11 @@ kubectl crossplane push configuration public.ecr.aws/e9p0j2k2/crossplane-eks:v1
 sudo openssl req -x509 -nodes -newkey rsa:4096 -keyout "$PRIVATEKEY" -out "$PUBLICKEY" -subj "/CN=sealed-secret/O=sealed-secret"
 
 # Try removing or commenting RANDFILE = $ENV::HOME/.rnd line in /etc/ssl/openssl.cnf
+# export your variables
+~ » export PRIVATEKEY="mytls.key"
+~ » export PUBLICKEY="mytls.crt"
+~ » export NAMESPACE="sealed-secrets"
+~ » export SECRETNAME="mycustomkeys
 
 kubectl -n "$NAMESPACE" create secret tls "$SECRETNAME" --cert="$PUBLICKEY" --key="$PRIVATEKEY"
 kubectl -n "$NAMESPACE" label secret "$SECRETNAME" sealedsecrets.bitnami.com/sealed-secrets-key=active
