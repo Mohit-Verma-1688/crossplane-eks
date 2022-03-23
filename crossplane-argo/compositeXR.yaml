@@ -1,0 +1,146 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositeclusters.prodready.cluster
+spec:
+  connectionSecretKeys:
+  - kubeconfig
+  defaultCompositionRef:
+    name: cluster-aws
+  group: prodready.cluster
+  names:
+    kind: CompositeCluster
+    plural: compositeclusters
+  claimNames:
+    kind: ClusterClaim
+    plural: clusterclaims
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID of this Cluster that other objects will use to refer to it.
+              parameters:
+                type: object
+                properties:
+                  version:
+                    description: The Kubernetes version for the cluster.
+                    type: string
+                  nodeSize:
+                    description: The size of the nodes; small, medium, large
+                    type: string
+                  minNodeCount:
+                    description: The minimum number of nodes
+                    type: integer
+                    default: 1
+                  k8s-version:
+                    description: Kubernetes version
+                    type: string
+                    enum: ["1.20", "1.21", "1.22"]
+                  region:
+                    description: Geographic location of this VPC
+                    type: string
+                    enum: ["us-east-1", "us-west-2","us-east-2"]
+                  subnet1-public-cidrBlock:
+                    description: CIDR block for public subnet 1
+                    type: string
+                  subnet1-public-availabilityZone:
+                    description: AZ for public subnet 1
+                    type: string
+                  subnet1-public-name:
+                    description: Name for public subnet 1
+                    type: string
+                  subnet1-public-cidrBlock:
+                    description: CIDR block for public subnet 1
+                    type: string
+                  subnet1-public-availabilityZone:
+                    description: AZ for public subnet 1
+                    type: string
+
+                  subnet2-public-name:
+                    description: Name for public subnet 2
+                    type: string
+                  subnet2-public-cidrBlock:
+                    description: CIDR block for public subnet 2
+                    type: string
+                  subnet2-public-availabilityZone:
+                    description: AZ for public subnet 2
+                    type: string
+
+                  subnet1-private-name:
+                    description: Name for private subnet 1
+                    type: string
+                  subnet1-private-cidrBlock:
+                    description: CIDR block for private subnet 1
+                    type: string
+                  subnet1-private-availabilityZone:
+                    description: AZ for private subnet 1
+                    type: string
+
+                  subnet2-private-name:
+                    description: Name for private subnet 2
+                    type: string
+                  subnet2-private-cidrBlock:
+                    description: CIDR block for private subnet 2
+                    type: string
+                  subnet2-private-availabilityZone:
+                    description: AZ for private subnet 2
+                    type: string
+                  vpc-cidrBlock:
+                    description: CIDR block for VPC
+                    type: string
+                  vpc-name:
+                    description: Name for VPC
+                    type: string
+                required:
+                - nodeSize
+                - region
+                - k8s-version
+                - minNodeCount
+                - vpc-name
+                - vpc-cidrBlock
+                - subnet1-public-name
+                - subnet1-public-cidrBlock
+                - subnet1-public-availabilityZone
+                - subnet2-public-name
+                - subnet2-public-cidrBlock
+                - subnet2-public-availabilityZone
+                - subnet1-private-name
+                - subnet1-private-cidrBlock
+                - subnet1-private-availabilityZone
+                - subnet2-private-name
+                - subnet2-private-cidrBlock
+                - subnet2-private-availabilityZone
+            required:
+            - id
+            - parameters
+          status:
+            type: object
+            properties:
+              clusterName:
+                description: The name of the cluster
+                type: string
+              controlPlaneStatus:
+                description: The status of the control plane
+                type: string
+              nodePoolStatus:
+                description: The status of the node pool
+                type: string
+    additionalPrinterColumns:
+    - name: clusterName
+      type: string
+      jsonPath: ".status.clusterName"
+    - name: controlPlane
+      type: string
+      jsonPath: ".status.controlPlaneStatus"
+    - name: nodePool
+      type: string
+      jsonPath: ".status.nodePoolStatus"
