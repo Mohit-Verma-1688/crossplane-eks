@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: php-fpm
-        image: mohitverma1688/php-app:main-dc204d66-1646805423
+        image: mohitverma1688/php-app:v1-cloud
         ports:
         - containerPort: 9000
           name: http
