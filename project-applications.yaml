@@ -23,15 +23,15 @@ spec:
   - namespace: argocd
     server: https://kubernetes.default.svc 
   - namespace: monitoring
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com 
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com 
   - namespace: ingress-nginx
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
   - namespace: cert-manager
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
   - namespace: demo-webapp
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
   - namespace: kube-system
-    server: https://ED442C603557ECC1AE9B22EDCF5C396B.gr7.us-east-1.eks.amazonaws.com
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
   #
   # Deny all namespace-scoped resources from being created, except for Application
   clusterResourceWhitelist:
